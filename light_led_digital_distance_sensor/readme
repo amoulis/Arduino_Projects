@@ -1,0 +1,13 @@
+This a really sample made "just for fun".
+You'll find very similar examples in the Arduino Examples.
+
+When, the digital sensor is detecting something or someone it lights up a LED
+
+Hardware:
+- Arduino Uno
+- LED
+- Pololu SHARP GP2Y0D805Z0F
+
+License: "Do whatever you want woith this code"
+
+Adrien Moulis 19/12/2014
