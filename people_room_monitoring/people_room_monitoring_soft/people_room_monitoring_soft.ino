@@ -3,7 +3,7 @@
 
   int enter = 0, inside = 0, out = 0;
   t_sensor sensor1, sensor2;
-  
+  int stateChanged = 0;
 bool isDetected(int pinsensor)
 {
   if (digitalRead(pinsensor) == HIGH) 
@@ -61,6 +61,7 @@ void loop()
       sensor2.activated = 0;
       inside--;
       out++;
+      stateChanged = 1;
     }  
   }
   if (isDetected(sensor2.sensor) == true)
@@ -73,17 +74,21 @@ void loop()
       sensor1.activated = 0;
       inside++;
       enter++;
+      stateChanged = 1;
     }  
   
   }
   
   if(inside < 0)
     inside = 0;
-
-  sprintf(data, "enters : %d, inside the room: %d, left: %d \n", enter, inside, out);
-  Serial.println(data);
   
-  delay(100);
+  if (stateChanged == 1)
+  {
+    sprintf(data, "enters : %d, inside the room: %d, left: %d \n", enter, inside, out);
+    Serial.println(data);
+    stateChanged = 0;
+  }
+  //delay(100);
   
 }
 
